@@ -159,6 +159,29 @@ section{padding:5rem 0}
 .succession-metrics{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem}
 .smetric{background:var(--dk2);border:1px solid var(--br);border-radius:8px;padding:.4rem .85rem;font-size:.75rem;color:var(--mu)}
 .smetric strong{color:var(--tx)}
+
+/* ── CRM ── */
+#crm{background:var(--dk2);padding:5rem 0}
+.crm-table-wrap{overflow-x:auto;margin-top:2rem;border-radius:12px;border:1px solid var(--bd)}
+.crm-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.crm-table thead tr{background:var(--dk3,#161b22);border-bottom:1px solid var(--bd)}
+.crm-table th{padding:.75rem 1.25rem;text-align:left;color:var(--mu);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.crm-table tbody tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s}
+.crm-table tbody tr:hover{background:rgba(255,255,255,.03)}
+.crm-table tbody tr:last-child{border-bottom:none}
+.crm-table td{padding:.65rem 1.25rem;color:var(--tx);vertical-align:middle}
+.crm-table td:first-child{font-weight:500}
+.stage{display:inline-block;padding:.2rem .65rem;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.stage-legal{background:rgba(82,183,136,.15);color:#52b788;border:1px solid rgba(82,183,136,.3)}
+.stage-neg{background:rgba(244,162,97,.15);color:#f4a261;border:1px solid rgba(244,162,97,.3)}
+.stage-gc{background:rgba(59,130,246,.15);color:#3b82f6;border:1px solid rgba(59,130,246,.3)}
+.stage-gi{background:rgba(116,198,157,.12);color:#74c69d;border:1px solid rgba(116,198,157,.25)}
+.stage-disc{background:rgba(139,148,158,.1);color:#8b949e;border:1px solid rgba(139,148,158,.2)}
+.fc{display:inline-block;padding:.2rem .65rem;border-radius:20px;font-size:.72rem;font-weight:500;white-space:nowrap}
+.fc-commit{background:rgba(82,183,136,.12);color:#52b788}
+.fc-best{background:rgba(244,162,97,.12);color:#f4a261}
+.fc-pipe{background:rgba(139,148,158,.08);color:#8b949e}
+
 </style>
 </head>
 <body>
@@ -172,6 +195,7 @@ section{padding:5rem 0}
   <a href="#contract">Contract Mgmt</a>
   <a href="#budgeting">Budgeting</a>
   <a href="#ecosystem">Ecosystem</a> <a href="#pricing">Pricing</a>
+  <a href="#crm">CRM</a>
 </div></nav>
 
 <!-- HERO -->
@@ -720,6 +744,69 @@ section{padding:5rem 0}
 
 
 
+
+
+
+<!-- CRM -->
+<section id="crm">
+<div class="wrap">
+  <div class="sec-label">Pipeline Overview</div>
+  <h2>Client <em>Relationship</em> Management</h2>
+  <p class="sec-sub">Active opportunities across clubs, federations and sports organisations currently in conversation with Cyferd Sports.</p>
+
+  <div class="crm-table-wrap">
+    <table class="crm-table">
+      <thead>
+        <tr>
+          <th>Opportunity Name</th>
+          <th>Stage</th>
+          <th>Forecast Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tigres / CEMEX</td><td><span class="stage stage-legal">Legal</span></td><td><span class="fc fc-commit">Commit</span></td></tr>
+        <tr><td>LMB · Mexican Baseball League</td><td><span class="stage stage-legal">Legal</span></td><td><span class="fc fc-commit">Commit</span></td></tr>
+        <tr><td>Atletico de Madrid Multi Club</td><td><span class="stage stage-neg">Negotiation</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Chivas Guadalajara</td><td><span class="stage stage-neg">Negotiation</span></td><td><span class="fc fc-best">Best Case</span></td></tr>
+        <tr><td>MSAL · USpolo Renewal</td><td><span class="stage stage-gc">Goal Confirmed</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Orlegi Sports</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Bayern Leverkusen</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Leagues Cup</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Pittsburgh University</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Benfica · Club Portugal</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Saudi Football Federation</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>TV Azteca · Stadium Management</td><td><span class="stage stage-gi">Goal Identified</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Chile Football Federation</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Blue Crow Sports (Cancún, Leganés)</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Jeffrey Earnhardt · NASCAR</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>FIBA · International Basketball Federation</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Dominican Baseball League</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>American Basketball Association</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>DC United</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Aston Villa</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Shot Tracker · Basketball Data Provider</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Urawa Reds · Japanese Football Club</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Impect Data Company</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Valencia Basketball Club</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Querétaro FC</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Minnesota United</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Cercle Brugge / Monaco</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Arsenal FC · Talent ID Director</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Romanian Football Federation (FFR)</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Club Deportivo Toluca · Scouting App</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>CONCACAF · Travel Management</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Federación Mexicana de Fútbol (FMF)</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>US Soccer</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Gol Stats · Partner</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Necaxa</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Rayados Monterrey</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>Manchester City</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+        <tr><td>MLS</td><td><span class="stage stage-disc">Discovery</span></td><td><span class="fc fc-pipe">Pipeline</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
 
 <footer style="background:var(--dk2);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center">
   <div style="font-size:1.5rem;margin-bottom:.75rem">⚽</div>
