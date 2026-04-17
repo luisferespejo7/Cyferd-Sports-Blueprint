@@ -182,6 +182,25 @@ section{padding:5rem 0}
 .fc-best{background:rgba(244,162,97,.12);color:#f4a261}
 .fc-pipe{background:rgba(139,148,158,.08);color:#8b949e}
 
+
+/* ── PROPOSALS ── */
+#proposals{background:var(--dk);padding:5rem 0}
+.proposals-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+@media(max-width:700px){.proposals-grid{grid-template-columns:1fr}}
+.proposals-col h3{font-size:1rem;font-weight:700;color:var(--gb);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:1px solid var(--bd)}
+.prop-card{background:var(--dk2);border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.75rem}
+.prop-card .prop-title{font-weight:700;color:var(--tx);font-size:.9rem;margin-bottom:.3rem}
+.prop-card .prop-desc{color:var(--mu);font-size:.82rem;line-height:1.5}
+.prop-card.new-card{border-style:dashed;border-color:rgba(82,183,136,.4)}
+.prop-card.new-card .prop-title{color:var(--gb)}
+.add-prop-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;padding:.45rem 1rem;border-radius:20px;border:1px solid rgba(82,183,136,.4);background:rgba(82,183,136,.08);color:var(--gb);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+.add-prop-btn:hover{background:rgba(82,183,136,.18);border-color:var(--gb)}
+.prop-input-wrap{display:none;margin-top:.75rem;flex-direction:column;gap:.5rem}
+.prop-input-wrap.open{display:flex}
+.prop-input-wrap input,.prop-input-wrap textarea{background:var(--dk3,#1e2a38);border:1px solid var(--bd);border-radius:8px;color:var(--tx);padding:.5rem .75rem;font-size:.82rem;font-family:inherit;resize:none;outline:none}
+.prop-input-wrap input:focus,.prop-input-wrap textarea:focus{border-color:rgba(82,183,136,.5)}
+.prop-input-wrap .prop-save-btn{align-self:flex-start;padding:.35rem .9rem;border-radius:20px;border:none;background:var(--gb);color:#0d1117;font-weight:700;font-size:.78rem;cursor:pointer}
+
 </style>
 </head>
 <body>
@@ -196,6 +215,7 @@ section{padding:5rem 0}
   <a href="#budgeting">Budgeting</a>
   <a href="#ecosystem">Ecosystem</a> <a href="#pricing">Pricing</a>
   <a href="#crm">CRM</a>
+  <a href="#proposals">Proposals</a>
 </div></nav>
 
 <!-- HERO -->
@@ -807,6 +827,84 @@ section{padding:5rem 0}
   </div>
 </div>
 </section>
+
+
+<!-- PROPOSALS -->
+<section id="proposals">
+<div class="wrap">
+  <div class="sec-label">Roadmap</div>
+  <h2>New Apps <em>Proposals</em></h2>
+  <p class="sec-sub">Upcoming product concepts under evaluation — expanding the Cyferd Sports platform.</p>
+
+  <div class="proposals-grid">
+
+    <!-- Football Apps -->
+    <div class="proposals-col" id="col-football">
+      <h3>New Apps · Football</h3>
+
+      <div class="prop-card">
+        <div class="prop-title">Player Valuation</div>
+        <div class="prop-desc">Build your algorithm towards an adhoc valuation of the assets.</div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-title">Coaching App</div>
+        <div class="prop-desc">Compare managers with all the data available of their past and predict in your environment with your roster.</div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-title">Travel Management App</div>
+        <div class="prop-desc">Logistics and cost efficient recruitment solution.</div>
+      </div>
+
+      <button class="add-prop-btn" onclick="openAddForm('col-football')">+ Add Proposal</button>
+      <div class="prop-input-wrap" id="form-col-football">
+        <input type="text" id="title-col-football" placeholder="App name" />
+        <textarea id="desc-col-football" rows="2" placeholder="Short description"></textarea>
+        <button class="prop-save-btn" onclick="saveProposal('col-football')">Save</button>
+      </div>
+    </div>
+
+    <!-- Sports Business Apps -->
+    <div class="proposals-col" id="col-business">
+      <h3>Sports Business Apps</h3>
+
+      <div class="prop-card">
+        <div class="prop-title">For Brands · Nike, Adidas, Puma, New Balance</div>
+        <div class="prop-desc">SQL copilot, automatización de follow-up operativo, y modelos de allocation/routing para optimizar la operación diaria.</div>
+      </div>
+
+      <button class="add-prop-btn" onclick="openAddForm('col-business')">+ Add Proposal</button>
+      <div class="prop-input-wrap" id="form-col-business">
+        <input type="text" id="title-col-business" placeholder="App name" />
+        <textarea id="desc-col-business" rows="2" placeholder="Short description"></textarea>
+        <button class="prop-save-btn" onclick="saveProposal('col-business')">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<script>
+function openAddForm(colId) {
+  const form = document.getElementById('form-' + colId);
+  form.classList.toggle('open');
+}
+function saveProposal(colId) {
+  const title = document.getElementById('title-' + colId).value.trim();
+  const desc  = document.getElementById('desc-'  + colId).value.trim();
+  if (!title) return;
+  const card = document.createElement('div');
+  card.className = 'prop-card new-card';
+  card.innerHTML = '<div class="prop-title">' + title + '</div>' +
+    (desc ? '<div class="prop-desc">' + desc + '</div>' : '');
+  const col = document.getElementById(colId);
+  const btn = col.querySelector('.add-prop-btn');
+  col.insertBefore(card, btn);
+  document.getElementById('title-' + colId).value = '';
+  document.getElementById('desc-'  + colId).value = '';
+  document.getElementById('form-'  + colId).classList.remove('open');
+}
+</script>
 
 <footer style="background:var(--dk2);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center">
   <div style="font-size:1.5rem;margin-bottom:.75rem">⚽</div>
