@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Modern Football Club Data Blueprint · by Cyferd Sports</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#2d6a4f;--gl:#52b788;--gb:#74c69d;--gold:#f4a261;--dk:#0d1117;--dk2:#161b22;--dk3:#1e2a38;--tx:#e6edf3;--mu:#8b949e;--br:#30363d;--red:#e63946;--bl:#3b82f6;--pu:#8b5cf6}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--tx);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:0 2rem}
+.ni{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;height:52px;overflow-x:auto;scrollbar-width:none}
+.ni::-webkit-scrollbar{display:none}
+.logo{font-weight:800;color:var(--gb);font-size:.95rem;white-space:nowrap;margin-right:.75rem}
+nav a{color:var(--mu);text-decoration:none;font-size:.78rem;white-space:nowrap;padding:4px 10px;border-radius:20px;transition:all .2s}
+nav a:hover{color:var(--tx);background:var(--dk3)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem}
+.hero{background:linear-gradient(135deg,#0d1117 0%,#1e2a38 50%,#0d2818 100%);padding:6rem 2rem 5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(82,183,136,.15),transparent 70%)}
+.badge{display:inline-block;background:rgba(82,183,136,.12);border:1px solid rgba(82,183,136,.3);color:var(--gb);padding:4px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:.5rem;position:relative}
+.hero h1 em{color:var(--gb);font-style:normal}
+.hero-byline{font-size:1rem;font-weight:600;color:var(--mu);margin-bottom:1.25rem;letter-spacing:.5px}
+.hero p{font-size:1rem;color:var(--mu);max-width:580px;margin:0 auto 2.5rem}
+.hstats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;position:relative}
+.hs{text-align:center}
+.hs strong{display:block;font-size:1.8rem;font-weight:800;color:var(--gb)}
+.hs span{font-size:.75rem;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+section{padding:5rem 0}
+.slabel{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gb);margin-bottom:.6rem}
+.stitle{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:.6rem}
+.ssub{color:var(--mu);max-width:580px;margin-bottom:2.5rem;font-size:.95rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.card{background:var(--dk3);border:1px solid var(--br);border-radius:14px;padding:1.5rem;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--gl);transform:translateY(-3px)}
+.card h4{font-size:.92rem;font-weight:700;margin-bottom:.3rem}
+.card p{font-size:.82rem;color:var(--mu)}
+.cico{font-size:1.75rem;margin-bottom:.75rem;display:block}
+/* ROADMAP */
+.roadmap-track{display:flex;align-items:flex-start;gap:0;position:relative;overflow-x:auto;padding-bottom:1rem}
+.roadmap-track::before{content:'';position:absolute;top:38px;left:60px;right:60px;height:3px;background:linear-gradient(90deg,var(--gl),var(--gold),var(--bl));z-index:0;border-radius:2px}
+.rm-phase{flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
+.rm-dot{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;border:3px solid var(--br);margin-bottom:1.2rem;background:var(--dk2);transition:transform .2s}
+.rm-dot:hover{transform:scale(1.08)}
+.rm-phase-num{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:.3rem}
+.rm-phase-title{font-size:1rem;font-weight:800;color:var(--tx);margin-bottom:.4rem}
+.rm-phase-sub{font-size:.8rem;color:var(--mu);max-width:160px;line-height:1.5}
+.rm-items{margin-top:.8rem;display:flex;flex-direction:column;gap:.3rem;width:100%}
+.rm-item{background:var(--dk3);border:1px solid var(--br);border-radius:8px;padding:.4rem .7rem;font-size:.75rem;color:var(--tx);text-align:left}
+.rm-item span{color:var(--gl);font-weight:700;margin-right:.3rem}
+.rm-connector{width:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding-top:22px;color:var(--mu);font-size:.9rem}
+/* ACADEMY */
+.academy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-bottom:2.5rem}
+.acad-card{background:var(--dk2);border:1px solid var(--br);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden}
+.acad-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.acad-card.u16::before{background:var(--bl)}
+.acad-card.u18::before{background:var(--gl)}
+.acad-card.u21::before{background:var(--gold)}
+.acad-card.u23::before{background:var(--pu)}
+.acad-badge{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.25rem .6rem;border-radius:20px;display:inline-block;margin-bottom:.8rem}
+.acad-card.u16 .acad-badge{background:rgba(59,130,246,.15);color:var(--bl)}
+.acad-card.u18 .acad-badge{background:rgba(82,183,136,.15);color:var(--gl)}
+.acad-card.u21 .acad-badge{background:rgba(244,162,97,.15);color:var(--gold)}
+.acad-card.u23 .acad-badge{background:rgba(139,92,246,.15);color:var(--pu)}
+.acad-cost{font-size:1.8rem;font-weight:800;color:var(--tx);margin:.3rem 0 .1rem}
+.acad-cost-label{font-size:.75rem;color:var(--mu);margin-bottom:1rem}
+.acad-stat{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--br);font-size:.82rem}
+.acad-stat:last-child{border-bottom:none}
+.acad-stat-label{color:var(--mu)}
+.acad-stat-val{font-weight:700;color:var(--tx)}
+.acad-stat-val.green{color:var(--gl)}
+.acad-stat-val.gold{color:var(--gold)}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1.5rem}
+.player-card{background:var(--dk3);border:1px solid var(--br);border-radius:14px;padding:1.4rem;transition:border-color .2s,transform .2s}
+.player-card:hover{border-color:var(--gl);transform:translateY(-3px)}
+.player-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.player-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--dk2),var(--dk3));border:2px solid var(--gl);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.player-name{font-weight:800;font-size:.95rem;color:var(--tx)}
+.player-pos{font-size:.72rem;color:var(--gl);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.player-stats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.pstat{background:var(--dk2);border-radius:8px;padding:.5rem .7rem;text-align:center}
+.pstat-val{font-size:1rem;font-weight:800;color:var(--tx)}
+.pstat-lbl{font-size:.68rem;color:var(--mu);margin-top:.1rem}
+.pstat-val.green{color:var(--gl)}
+.pstat-val.gold{color:var(--gold)}
+.pstat-val.blue{color:var(--bl)}
+.roi-bar{margin-top:1rem;background:var(--dk2);border-radius:8px;overflow:hidden;height:8px}
+.roi-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--gl),var(--gold))}
+.roi-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--mu);margin-top:.3rem}
+/* KPI */
+.kpi-areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+.kpi-area{background:var(--dk2);border:1px solid var(--br);border-radius:14px;padding:1.4rem;transition:border-color .2s}
+.kpi-area:hover{border-color:var(--gl)}
+.kpi-area-header{display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;padding-bottom:.8rem;border-bottom:1px solid var(--br)}
+.kpi-area-icon{font-size:1.4rem}
+.kpi-area-title{font-size:.88rem;font-weight:800;color:var(--tx)}
+.kpi-area-sub{font-size:.72rem;color:var(--mu)}
+.kpi-list{display:flex;flex-direction:column;gap:.55rem}
+.kpi-row{display:flex;flex-direction:column;gap:.2rem}
+.kpi-row-top{display:flex;justify-content:space-between;align-items:center}
+.kpi-name{font-size:.78rem;color:var(--mu)}
+.kpi-val{font-size:.82rem;font-weight:700;color:var(--tx)}
+.kpi-bar-track{height:5px;background:var(--dk3);border-radius:3px;overflow:hidden}
+.kpi-bar-fill{height:100%;border-radius:3px;transition:width .6s}
+.kpi-bar-fill.green{background:var(--gl)}
+.kpi-bar-fill.gold{background:var(--gold)}
+.kpi-bar-fill.blue{background:var(--bl)}
+.kpi-bar-fill.red{background:var(--red)}
+.kpi-bar-fill.pu{background:var(--pu)}
+/* DATA TABLES */
+.table-wrap{overflow-x:auto;margin-bottom:2.5rem;border:1px solid var(--br);border-radius:12px}
+.data-table{width:100%;border-collapse:collapse;min-width:500px}
+.data-table thead tr{background:var(--dk3)}
+.data-table th{color:var(--gb);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.8rem 1.1rem;text-align:left;border-bottom:1px solid var(--br)}
+.data-table td{padding:.7rem 1.1rem;font-size:.83rem;border-bottom:1px solid rgba(48,54,61,.6);color:var(--tx);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tbody tr:hover td{background:rgba(255,255,255,.025)}
+.data-table td:first-child{font-weight:700;white-space:nowrap}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.68rem;font-weight:700;white-space:nowrap}
+.tag-data{background:rgba(59,130,246,.15);color:var(--bl);border:1px solid rgba(59,130,246,.25)}
+.tag-video{background:rgba(139,92,246,.15);color:var(--pu);border:1px solid rgba(139,92,246,.25)}
+.tag-science{background:rgba(82,183,136,.15);color:var(--gl);border:1px solid rgba(82,183,136,.25)}
+.tag-multi{background:rgba(244,162,97,.15);color:var(--gold);border:1px solid rgba(244,162,97,.25)}
+.tag-hub{background:rgba(230,57,70,.15);color:var(--red);border:1px solid rgba(230,57,70,.25)}
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:780px;margin-bottom:3rem}
+@media(max-width:620px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{background:var(--dk3);border:1px solid var(--br);border-radius:16px;padding:2rem;position:relative;overflow:hidden;text-align:center}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gl),var(--bl))}
+.price-card-label{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:.75rem}
+.price-big{font-size:4rem;font-weight:900;color:var(--gb);line-height:1;margin-bottom:.25rem}
+.price-note{font-size:.8rem;color:var(--mu);font-style:italic;margin-bottom:1.5rem}
+.price-breakdown{display:flex;flex-direction:column;gap:.5rem;text-align:left}
+.prow{display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:var(--dk2);border-radius:8px;font-size:.82rem;border:1px solid var(--br)}
+.prow-lbl{color:var(--mu)}
+.prow-val{font-weight:700;color:var(--tx)}
+.prow.total{background:rgba(82,183,136,.08);border-color:rgba(82,183,136,.3)}
+.prow.total .prow-lbl{color:var(--tx);font-weight:700}
+.prow.total .prow-val{color:var(--gb);font-size:1.05rem}
+.apps-row{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+.app-tile{display:flex;flex-direction:column;align-items:center;gap:.5rem;background:var(--dk3);border:1px solid var(--br);border-radius:14px;padding:1.25rem 1.5rem;min-width:110px;transition:border-color .2s,transform .2s}
+.app-tile:hover{border-color:var(--gl);transform:translateY(-3px)}
+.app-tile-icon{font-size:2rem}
+.app-tile-name{font-size:.78rem;font-weight:700;text-align:center;color:var(--tx)}
+/* CLM TYPES */
+.types-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+@media(max-width:600px){.types-grid{grid-template-columns:1fr}}
+.type-block{background:var(--dk3);border:1px solid var(--br);border-radius:12px;padding:1.25rem}
+.type-block h5{font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
+.type-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.type-list li{font-size:.82rem;color:var(--mu);padding-left:.9rem;position:relative}
+.type-list li::before{content:'›';position:absolute;left:0;color:var(--gb);font-weight:700}
+/* SUCCESSION */
+.succession-card{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(82,183,136,.08));border:1px solid rgba(82,183,136,.3);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap}
+.succession-icon{font-size:2.5rem;flex-shrink:0}
+.succession-metrics{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem}
+.smetric{background:var(--dk2);border:1px solid var(--br);border-radius:8px;padding:.4rem .85rem;font-size:.75rem;color:var(--mu)}
+.smetric strong{color:var(--tx)}
+</style>
+</head>
+<body>
+
+<nav><div class="ni">
+  <span class="logo">⚽ Modern FC</span>
+  <a href="#challenge">Challenge</a>
+  <a href="#scouting">Scouting</a>
+  <a href="#sports-intelligence">Sports Intel</a>
+  <a href="#ss">Sport Science</a>
+  <a href="#contract">Contract Mgmt</a>
+  <a href="#budgeting">Budgeting</a>
+  <a href="#pricing">Pricing</a>
+</div></nav>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap" style="position:relative">
+  <div class="badge">by Cyferd Sports · 2026</div>
+  <h1>Modern Football Club<br/><em>Data Blueprint</em></h1>
+  <div class="hero-byline">by Cyferd Sports</div>
+  <p>A comprehensive data-driven framework to connect sporting vision, technology, operations, and decision-making across modern football organizations.</p>
+</div></div>
+
+<!-- CHALLENGE -->
+<section id="challenge" style="background:var(--dk2)"><div class="wrap">
+  <div class="slabel">The Problem</div>
+  <h2 class="stitle">Why Most Clubs Struggle</h2>
+  <p class="ssub">Modern football organizations face structural inefficiencies that limit performance and long-term success.</p>
+  <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+    <div class="card" style="border-top:3px solid var(--red)"><span class="cico">🏚️</span><h4>Siloed Departments</h4><p>Scouting, performance, and finance operate independently with no shared data flow or common KPIs.</p></div>
+    <div class="card" style="border-top:3px solid var(--red)"><span class="cico">🔀</span><h4>No Scouting Structure</h4><p>Player identification varies by scout with no consistent methodology or profile alignment.</p></div>
+    <div class="card" style="border-top:3px solid var(--red)"><span class="cico">📊</span><h4>Data Without Decisions</h4><p>Clubs collect data but it rarely reaches decision-makers in a useful, actionable format.</p></div>
+    <div class="card" style="border-top:3px solid var(--red)"><span class="cico">⚡</span><h4>Sporting Misalignment</h4><p>Sporting vision, finance, and performance operate without shared objectives or timelines.</p></div>
+    <div class="card" style="border-top:3px solid var(--red)"><span class="cico">🌎</span><h4>Regional Inconsistency</h4><p>Talent identification varies across markets without a unified evaluation methodology.</p></div>
+  </div>
+</div></section>
+
+
+<!-- SCOUTING -->
+<section id="scouting" style="background:var(--dk2)"><div class="wrap">
+  <div class="slabel">Sports Department</div>
+  <h2 class="stitle">Full Scouting Process</h2>
+  <p class="ssub">End-to-end workflow — from club methodology to final recommendation. 5 structured steps across 3 phases.</p>
+
+  <!-- Phase 1 -->
+  <div style="margin-bottom:2.5rem">
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(82,183,136,.1);border:1px solid rgba(82,183,136,.25);color:var(--gb);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem">Phase 1 · What to Look For?</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem">
+      <div class="card"><div style="font-size:.68rem;font-weight:700;color:var(--gb);letter-spacing:1px;margin-bottom:.4rem">STEP 01</div><h4>Club Methodology</h4><p>Define game style: attacking phase, defensive phase, pressing, set pieces. Align with Technical Director on club identity.</p></div>
+      <div class="card"><div style="font-size:.68rem;font-weight:700;color:var(--gb);letter-spacing:1px;margin-bottom:.4rem">STEP 02</div><h4>Season Overview</h4><p>End-of-season meeting: review collective + positional data. Output: positions needed and ideal attributes — no names yet.</p></div>
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div style="margin-bottom:2.5rem">
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:var(--bl);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem">Phase 2 · Analysis</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem">
+      <div class="card"><div style="font-size:.68rem;font-weight:700;color:var(--bl);letter-spacing:1px;margin-bottom:.4rem">STEP 03</div><h4>Data Analysis</h4><p>StatsBomb, Driblab, Impect, SkillCorner — per 90 stats, rankings by position, league comparison, age curve projection.</p></div>
+      <div class="card"><div style="font-size:.68rem;font-weight:700;color:var(--bl);letter-spacing:1px;margin-bottom:.4rem">STEP 04</div><h4>Reference Category</h4><p>AI similarity tools: who plays like Player X? Cross-league comparisons using Impect + StatsBomb models.</p></div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div>
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);color:var(--pu);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem">Phase 3 · Decision</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem">
+      <div class="card"><div style="font-size:.68rem;font-weight:700;color:var(--pu);letter-spacing:1px;margin-bottom:.4rem">STEP 05</div><h4>Candidates Comparison</h4><p>Side-by-side: league benchmarks, global benchmarks, scouted targets vs. current roster positional needs.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- SPORTS INTELLIGENCE -->
+<section id="sports-intelligence" style="background:var(--dk)"><div class="wrap">
+  <div class="slabel">Technology &amp; Data</div>
+  <h2 class="stitle">Sports Intelligence</h2>
+  <p class="ssub">The Sports Technology Funnel — platforms and tools that power modern football. From raw data to winning decisions.</p>
+
+  <!-- Funnel Visual -->
+  <div style="margin-bottom:3rem">
+    <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:1rem">Sports Technology Funnel</div>
+    <div style="display:flex;flex-direction:column;gap:4px;max-width:100%">
+      <div style="background:#1557a0;border-radius:8px 8px 2px 2px;padding:10px 16px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">📊 Data Providers</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">Driblab · StatsBomb · Opta · Golstats · Impect · Wyscout</span></div>
+      <div style="background:#065f46;border-radius:2px;padding:10px 16px;margin:0 20px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">💪 Sports Science &amp; GPS</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">WIMU · Catapult · STATSports · ThermoHuman · SkillCorner · NeuroTracker</span></div>
+      <div style="background:#5b21b6;border-radius:2px;padding:10px 16px;margin:0 40px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">🎥 Video Analysis</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">Wyscout · LongoMatch · Pixellot · Kin Analytics</span></div>
+      <div style="background:#7c3317;border-radius:2px;padding:10px 16px;margin:0 60px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">📋 Services &amp; Operations</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">Cyferd Sports · TransferRoom · TeamWork</span></div>
+      <div style="background:#1a4f7a;border-radius:2px;padding:10px 16px;margin:0 80px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">🔍 Scouting Platform</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">Cyferd Scouting · SciSports · Kin Analytics</span></div>
+      <div style="background:#854F0B;border-radius:2px;padding:10px 16px;margin:0 100px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">🏆 Player Performance</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">Cyferd Performance · Teamworks AMS · Kitman Labs</span></div>
+      <div style="background:#047857;border-radius:2px 2px 8px 8px;padding:10px 16px;margin:0 120px;display:flex;align-items:center;gap:10px"><span style="color:#fff;font-weight:700;font-size:.85rem">🌱 Academy</span><span style="color:rgba(255,255,255,.6);font-size:.72rem;margin-left:auto">Cyferd Academy · Coach Intelligence Lab</span></div>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--dk2),#0d3320);border-radius:10px;padding:12px 16px;margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+      <span style="font-size:.75rem;font-weight:700;background:rgba(255,255,255,.1);padding:3px 10px;border-radius:6px;color:#fff">Technology</span>
+      <span style="color:var(--mu);font-weight:800">+</span>
+      <span style="font-size:.75rem;font-weight:700;background:rgba(255,255,255,.1);padding:3px 10px;border-radius:6px;color:#fff">Mindset</span>
+      <span style="color:var(--mu);font-weight:800">+</span>
+      <span style="font-size:.75rem;font-weight:700;background:rgba(255,255,255,.1);padding:3px 10px;border-radius:6px;color:#fff">Strategic Thinking</span>
+      <span style="color:var(--mu);font-weight:800">=</span>
+      <span style="font-size:.8rem;font-weight:800;color:#4ade80;padding:3px 12px;background:rgba(74,222,128,.15);border-radius:6px;border:1px solid rgba(74,222,128,.3)">Winning Games</span>
+    </div>
+  </div>
+
+  <!-- TABLE 1: DATA PROVIDERS -->
+  <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1557a0;margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:2px solid #1557a0">📊 Data Providers</div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Golstats</td>
+          <td><span class="tag tag-data">Data</span></td>
+          <td>Panoramic camera tracking for all Liga MX matches. Available exclusively to Liga MX member clubs.</td>
+        </tr>
+        <tr>
+          <td>Wyscout</td>
+          <td><span class="tag tag-video">Video &amp; Data</span></td>
+          <td>Industry-standard video scouting platform. 40K+ teams, 90+ competitions. Combined video and statistical data.</td>
+        </tr>
+        <tr>
+          <td>Impect</td>
+          <td><span class="tag tag-data">Data</span></td>
+          <td>Deep build-up &amp; passing models. Unique pressing and ball progression metrics. Strong for tactical-focused clubs.</td>
+        </tr>
+        <tr>
+          <td>Driblab</td>
+          <td><span class="tag tag-data">Data</span></td>
+          <td>Physical &amp; tactical metrics via API. Liga MX leader — used by 8 MX clubs and the Federation.</td>
+        </tr>
+        <tr>
+          <td>Kin Analytics</td>
+          <td><span class="tag tag-science">Sport Science Solution</span></td>
+          <td>Recruitment analytics with expected contribution modeling and transfer value predictions. Strong in English football.</td>
+        </tr>
+        <tr>
+          <td>LongoMatch</td>
+          <td><span class="tag tag-video">Video Analysis</span></td>
+          <td>Strong tagging and clip analysis. Popular in academies. Solid open-source option for tactical video workflows.</td>
+        </tr>
+        <tr>
+          <td>Pixellot</td>
+          <td><span class="tag tag-video">Video Analysis</span></td>
+          <td>AI auto-camera — no operator needed. AI follows the game automatically. Used by FC Barcelona Academy. 3,000+ venues worldwide.</td>
+        </tr>
+        <tr>
+          <td>Opta (Stats Perform)</td>
+          <td><span class="tag tag-data">Data</span></td>
+          <td>Veteran data provider. Comprehensive historical databases. Common in broadcast and club analytics globally.</td>
+        </tr>
+        <tr>
+          <td>StatsBomb</td>
+          <td><span class="tag tag-data">Data</span></td>
+          <td>Industry standard in event data &amp; 360° tracking. StatsBomb Open is the benchmark for open-source football analytics.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TABLE 2: SERVICES PROVIDERS -->
+  <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7c3317;margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:2px solid #7c3317">🛠️ Services Providers</div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Category</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cyferd Sports</td>
+          <td><span class="tag tag-multi">Multiple Solutions</span></td>
+          <td>Full-stack football operations platform covering Scouting, Player Performance, Budgeting, Sport Science, and Contract Management in a single connected system.</td>
+        </tr>
+        <tr>
+          <td>TransferRoom</td>
+          <td><span class="tag tag-hub">Contract Mgmt &amp; Transfer Hub</span></td>
+          <td>Direct club-to-club transfer network with real-time availability alerts. 500+ clubs worldwide across MLS, EPL, and Championship leagues.</td>
+        </tr>
+        <tr>
+          <td>TeamWork</td>
+          <td><span class="tag tag-multi">Full Stack Platform</span></td>
+          <td>Recently acquired several athletic management platforms, now offering a complete stack of solutions for professional sports organizations.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- SPORT SCIENCE -->
+<section id="ss" style="background:var(--dk2)"><div class="wrap">
+  <div class="slabel">Performance</div>
+  <h2 class="stitle">Sport Science Department</h2>
+  <p class="ssub">Bridges data, physiology, and football performance. Supports coaching staff with objective metrics, player load management, and evidence-based protocols.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1.25rem;margin-bottom:2.5rem">
+    <div class="card" style="text-align:center;border-top:3px solid var(--gb)"><span class="cico">📡</span><h4>Load Monitoring</h4><p>GPS tracking, ATL/CTL ratios, HRV trends. Daily risk flags per player. Prevents overtraining and injury spikes.</p></div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--red)"><span class="cico">🩺</span><h4>Injury Prevention</h4><p>Pattern identification from physical testing. Thermography CPK baseline. Return-to-play protocols with clear criteria.</p></div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--bl)"><span class="cico">🔄</span><h4>Recovery Protocols</h4><p>Structured recovery sessions between fixtures. Sleep, cold water immersion, and nutrition timed to match schedule.</p></div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--gold)"><span class="cico">🏋️</span><h4>Physical Testing</h4><p>Pre-season: strength, endurance, jump, speed, asymmetry. Anthropometric baseline (fat mass, muscle, hydration).</p></div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--pu)"><span class="cico">🥗</span><h4>Nutrition &amp; Hydration</h4><p>Individual diet plans per player. Match-day nutrition protocol. Hydration tracking integrated with GPS load data.</p></div>
+    <div class="card" style="text-align:center;border-top:3px solid #06b6d4"><span class="cico">😴</span><h4>Sleep &amp; Wellbeing</h4><p>Sleep quality monitoring. Wellness questionnaires pre-training. Psychological readiness integrated with load decisions.</p></div>
+  </div>
+  <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:1rem">Staff Structure</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+    <div class="card"><h4 style="color:var(--gb);margin-bottom:.4rem">Head of Sport Science</h4><p>Leads the department. Designs annual monitoring plans, oversees testing batteries, communicates directly with Head Coach and SD.</p></div>
+    <div class="card"><h4 style="color:var(--gb);margin-bottom:.4rem">Performance Analyst</h4><p>Processes GPS and physical data. Builds load dashboards and flags injury-risk players daily using ATL/CTL and HRV trends.</p></div>
+    <div class="card"><h4 style="color:var(--gb);margin-bottom:.4rem">Physiotherapist</h4><p>Manages rehabilitation protocols. Works with performance staff to clear players from injury and design return-to-play criteria.</p></div>
+    <div class="card"><h4 style="color:var(--gb);margin-bottom:.4rem">Nutritionist</h4><p>Individual plans per player. Match-day nutrition protocols. Works with the hydration specialist on game-week structures.</p></div>
+    <div class="card"><h4 style="color:var(--gb);margin-bottom:.4rem">S&amp;C Coach</h4><p>Strength and conditioning programs. Manages gym sessions, in-season maintenance loads, and pre-season physical block.</p></div>
+    <div class="card"><h4 style="color:var(--gb);margin-bottom:.4rem">Psychologist</h4><p>Mindset, pressure management, team cohesion, and individual player support. Integrated in the weekly staff meeting.</p></div>
+  </div>
+</div></section>
+
+<!-- OPERATIONAL GOVERNANCE — CONTRACT MANAGEMENT -->
+<section id="contract" style="background:var(--dk)"><div class="wrap">
+  <div class="slabel">Operational Governance</div>
+  <h2 class="stitle">Contract Lifecycle Management</h2>
+  <p class="ssub">Cyferd Sports CLM platform — all legal, sporting, commercial, and operational contract processes in a single centralized system.</p>
+
+  <!-- Key benefits -->
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem">
+    <div style="background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.2);border-radius:10px;padding:.6rem 1.1rem;font-size:.82rem;color:var(--gb);font-weight:600">✓ Single source of truth for all club contracts</div>
+    <div style="background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.2);border-radius:10px;padding:.6rem 1.1rem;font-size:.82rem;color:var(--gb);font-weight:600">✓ Improved contract oversight &amp; compliance</div>
+    <div style="background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.2);border-radius:10px;padding:.6rem 1.1rem;font-size:.82rem;color:var(--gb);font-weight:600">✓ Reduced operational risk &amp; missed obligations</div>
+  </div>
+
+  <!-- Squad Succession Plan (moved from Scouting) -->
+  <div class="succession-card">
+    <div class="succession-icon">📋</div>
+    <div style="flex:1">
+      <div style="font-size:.68rem;font-weight:700;color:var(--bl);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.3rem">Moved from Scouting · Now Integrated in CLM</div>
+      <h4 style="font-size:1rem;margin-bottom:.4rem">Squad Succession Plan</h4>
+      <p style="font-size:.85rem;color:var(--mu);margin-bottom:.75rem">The Squad Ladder connects contract lifecycle data directly to recruitment planning. Contract expiries, age distribution, and positional depth are tracked live within the CLM system, enabling proactive succession decisions benchmarked against champion squad profiles.</p>
+      <div class="succession-metrics">
+        <div class="smetric"><strong>Contract Expiry Tracking</strong> — by position</div>
+        <div class="smetric"><strong>Age Distribution</strong> — squad pyramid view</div>
+        <div class="smetric"><strong>Positional Depth</strong> — depth chart by role</div>
+        <div class="smetric"><strong>Youth Threshold</strong> — <strong>Young 6%+</strong> benchmark</div>
+        <div class="smetric"><strong>Champion Benchmarking</strong> — squad profile comparisons</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contract Types -->
+  <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:1rem">Contract Types Supported</div>
+  <div class="types-grid" style="margin-bottom:2.5rem">
+    <div class="type-block" style="border-top:3px solid var(--bl)">
+      <h5 style="color:var(--bl)">⚽ Sports Contracts</h5>
+      <ul class="type-list">
+        <li>Player Employment Contracts</li>
+        <li>Player Transfer Agreements</li>
+        <li>Loan Agreements</li>
+        <li>Academy Player Contracts</li>
+        <li>Coaching Staff Contracts</li>
+        <li>Player Representation Agreements</li>
+      </ul>
+    </div>
+    <div class="type-block" style="border-top:3px solid var(--gold)">
+      <h5 style="color:var(--gold)">🏢 Commercial &amp; Operational</h5>
+      <ul class="type-list">
+        <li>Sponsorship Agreements</li>
+        <li>Vendor &amp; Supplier Agreements</li>
+        <li>Licensing Agreements</li>
+        <li>Other Commercial Contracts</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Core Capabilities -->
+  <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:1rem">Core System Capabilities</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem">
+
+    <div class="card" style="border-left:3px solid var(--bl)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>🗄️</span> Centralized Contract Repository</h4>
+      <p style="margin-bottom:.75rem">Single repository for all club contracts with structured metadata tailored to football operations. Captured data includes:</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.4rem">
+        <span style="background:var(--dk2);border:1px solid var(--br);border-radius:6px;padding:2px 8px;font-size:.72rem;color:var(--mu)">Contract dates</span>
+        <span style="background:var(--dk2);border:1px solid var(--br);border-radius:6px;padding:2px 8px;font-size:.72rem;color:var(--mu)">Contract value</span>
+        <span style="background:var(--dk2);border:1px solid var(--br);border-radius:6px;padding:2px 8px;font-size:.72rem;color:var(--mu)">Agent details</span>
+        <span style="background:var(--dk2);border:1px solid var(--br);border-radius:6px;padding:2px 8px;font-size:.72rem;color:var(--mu)">Performance clauses</span>
+        <span style="background:var(--dk2);border:1px solid var(--br);border-radius:6px;padding:2px 8px;font-size:.72rem;color:var(--mu)">Contractual clauses</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--pu)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>⚙️</span> Dynamic Metadata Configuration</h4>
+      <p>Fields configured dynamically based on contract type — the interface shows or hides relevant fields automatically, ensuring each contract category captures only the information it needs.</p>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--gl)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>✍️</span> Contract Initiation &amp; Electronic Signing</h4>
+      <p style="margin-bottom:.6rem">Initiate contracts directly from the system using the club's existing e-signing provider. Key capabilities:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Auto-population of contract templates from stored data</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Initiation of signing processes from the CLM platform</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Tracking of contracts pending signature</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Automated status updates via API when contracts are signed</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>🔄</span> Workflow &amp; Approval Management</h4>
+      <p style="margin-bottom:.6rem">Configurable workflows route contracts through drafting, review, and approval stages:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Multi-stage approval routing</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Approval thresholds (e.g. transfers exceeding $10M)</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Full audit trail of approvals</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Controlled access during review stages</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--red)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>💸</span> Financial Tracking &amp; Obligations</h4>
+      <p style="margin-bottom:.6rem">Monitor all financial commitments and obligations across contracts:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Payment schedule tracking</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Milestone payment monitoring</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Bonus trigger tracking</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Financial obligation reporting</li>
+      </ul>
+      <div style="margin-top:.85rem;background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.15);border-radius:8px;padding:.6rem .9rem;font-size:.77rem;color:var(--mu)"><strong style="color:var(--tx)">Example:</strong> A transfer may include a $15M initial payment + $5M after 50 appearances + 10% sell-on clause — all tracked automatically within the system.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--gb)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>🔔</span> Contract Renewal Monitoring</h4>
+      <p style="margin-bottom:.6rem">Dashboards to monitor upcoming contract expirations and renewal opportunities:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Identify contracts approaching expiration</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Track renewal negotiations by status</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gb)">›</span>Reduce risk of contracts lapsing unintentionally</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--bl)">
+      <h4 style="margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem"><span>🔒</span> Security &amp; Access Control</h4>
+      <p style="margin-bottom:.75rem">Configurable data security supporting two primary user personas:</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div style="background:var(--dk2);border:1px solid var(--br);border-radius:8px;padding:.6rem .9rem;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.83rem;font-weight:700">Admin</span>
+          <span style="font-size:.78rem;color:var(--mu)">Full visibility across all contracts</span>
+        </div>
+        <div style="background:var(--dk2);border:1px solid var(--br);border-radius:8px;padding:.6rem .9rem;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.83rem;font-weight:700">Contract-Type Users</span>
+          <span style="font-size:.78rem;color:var(--mu)">Access restricted by contract type</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- BUDGETING FRAMEWORK -->
+<section id="budgeting" style="background:var(--dk2)"><div class="wrap">
+  <div class="slabel">Financial Planning</div>
+  <h2 class="stitle">Budgeting Framework</h2>
+  <p class="ssub">An end-to-end, automated budgeting platform — from framework definition through execution and in-year adjustments — ensuring consistency, transparency, and governance across all stakeholders.</p>
+
+  <!-- Why it matters -->
+  <div style="background:rgba(244,162,97,.06);border:1px solid rgba(244,162,97,.2);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2.5rem">
+    <div style="font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">Why This Matters</div>
+    <p style="font-size:.85rem;color:var(--mu);line-height:1.7">Current finance processes in football clubs are highly manual, fragmented, and heavily dependent on individuals — leading to inefficiencies, errors, and lack of traceability. Budgeting cycles can extend over months, consuming significant time from both finance and business teams. This platform eliminates that friction.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.35rem">
+
+    <div class="card" style="border-top:3px solid var(--gl)">
+      <span class="cico">🏗️</span>
+      <h4 style="margin-bottom:.5rem">Budget Framework Configuration</h4>
+      <p style="margin-bottom:.75rem">Finance teams centrally define and govern the full budget structure and parameters.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Define budget methodologies, cycles, and timelines</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Distribute standardized guidelines and templates</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Maintain single source of truth for all planning assumptions</li>
+      </ul>
+      <div style="margin-top:.75rem;font-size:.75rem;color:var(--gl);font-weight:600">Outcome: Controlled, standardized foundation for budget creation</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--bl)">
+      <span class="cico">📥</span>
+      <h4 style="margin-bottom:.5rem">Guided Budget Data Collection</h4>
+      <p style="margin-bottom:.75rem">Structured, user-friendly interfaces for cost center budget preparation.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Distribute dynamic working templates</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Enable cost center owners to input budgets with embedded validation rules</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Capture detailed justifications at the line-item level</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Support versioning and iterative updates without loss of auditability</li>
+      </ul>
+      <div style="margin-top:.75rem;font-size:.75rem;color:var(--bl);font-weight:600">Outcome: Accurate, complete, fully justified budget submissions</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--pu)">
+      <span class="cico">✅</span>
+      <h4 style="margin-bottom:.5rem">Embedded Review &amp; Approval Workflows</h4>
+      <p style="margin-bottom:.75rem">The platform digitizes and enforces multi-level validation processes.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--pu)">›</span>Collaborative reviews between finance and cost center owners</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--pu)">›</span>Automated checks for data consistency and assumption alignment</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--pu)">›</span>Route budgets through configurable approval hierarchies</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--pu)">›</span>Track feedback, revisions, and approvals in real time</li>
+      </ul>
+      <div style="margin-top:.75rem;font-size:.75rem;color:var(--pu);font-weight:600">Outcome: Streamlined validation with full transparency and governance</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--gold)">
+      <span class="cico">📊</span>
+      <h4 style="margin-bottom:.5rem">Automated Consolidation &amp; Executive Reporting</h4>
+      <p style="margin-bottom:.75rem">Aggregates all inputs into a unified financial view in real time.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Automatically consolidate budgets across cost centers and departments</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Generate executive dashboards and board-ready reports</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>Maintain traceability from consolidated figures to individual inputs</li>
+      </ul>
+      <div style="margin-top:.75rem;font-size:.75rem;color:var(--gold);font-weight:600">Outcome: Faster, more accurate consolidation with enhanced decision support</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--gl)">
+      <span class="cico">🔗</span>
+      <h4 style="margin-bottom:.5rem">Seamless ERP Integration &amp; Budget Deployment</h4>
+      <p style="margin-bottom:.75rem">Ensures smooth transition from planning to execution. Integration via ERP Import/Export template (CSV format).</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Validate and transform approved budgets for ERP compatibility</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Automate budget upload into ERP systems</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Notify stakeholders upon budget activation</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--gl)">›</span>Enable post-upload validation by cost centers</li>
+      </ul>
+      <div style="margin-top:.75rem;font-size:.75rem;color:var(--gl);font-weight:600">Outcome: Reduced manual effort with full alignment between planning and execution</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--red)">
+      <span class="cico">🔀</span>
+      <h4 style="margin-bottom:.5rem">Controlled Budget Adjustment Management</h4>
+      <p style="margin-bottom:.85rem">Governed, auditable in-year budget modifications.</p>
+      <div style="font-size:.72rem;font-weight:700;color:var(--red);letter-spacing:1px;margin-bottom:.4rem">BUDGET TRANSFERS</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.25rem;margin-bottom:.85rem">
+        <li style="font-size:.79rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Initiate via standardized digital forms</li>
+        <li style="font-size:.79rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Validate availability and enforce business rules</li>
+        <li style="font-size:.79rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Route for multi-level approval, then auto-update ERP</li>
+      </ul>
+      <div style="font-size:.72rem;font-weight:700;color:var(--red);letter-spacing:1px;margin-bottom:.4rem">BUDGET SUPPLEMENTS</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.25rem">
+        <li style="font-size:.79rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Capture additional funding requests with full justification</li>
+        <li style="font-size:.79rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Assess impact against overall budget availability</li>
+        <li style="font-size:.79rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">›</span>Apply changes directly in ERP upon approval</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--bl)">
+      <span class="cico">🛡️</span>
+      <h4 style="margin-bottom:.5rem">End-to-End Governance, Visibility &amp; Auditability</h4>
+      <p style="margin-bottom:.75rem">Across all stages, the platform provides:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Full audit trails of all changes, approvals, and decisions</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Real-time visibility into budget status and variances</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Role-based access control for secure collaboration</li>
+        <li style="font-size:.8rem;color:var(--mu);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:var(--bl)">›</span>Data consistency across planning, approval, and execution</li>
+      </ul>
+      <div style="margin-top:.75rem;font-size:.75rem;color:var(--bl);font-weight:600">Outcome: Transparent, compliant, and fully governed budgeting environment</div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- PRICING STRATEGY -->
+<section id="pricing" style="background:var(--dk)"><div class="wrap">
+  <div class="slabel">Cyferd Sports</div>
+  <h2 class="stitle">Pricing Strategy</h2>
+  <p class="ssub">Main Objective: Achieve full connectivity of all club data through the implementation of our applications. One platform, five apps, one connected club.</p>
+
+  <div class="pricing-grid">
+    <!-- Implementation -->
+    <div class="price-card">
+      <div class="price-card-label">Implementation Pricing</div>
+      <div class="price-big">$20K</div>
+      <div class="price-note">A one-time service fee charged at the start of each app deployment</div>
+      <div style="margin-top:1.25rem;background:rgba(82,183,136,.06);border:1px solid rgba(82,183,136,.15);border-radius:10px;padding:1rem;font-size:.82rem;color:var(--mu);line-height:1.6">
+        Covers system configuration, metadata &amp; field setup, workflow implementation, integrations, security configuration, testing, and deployment for each application.
+      </div>
+    </div>
+    <!-- Annual -->
+    <div class="price-card">
+      <div class="price-card-label">Total Annual · Licensing Per App</div>
+      <div class="price-breakdown">
+        <div class="prow">
+          <span class="prow-lbl">Operating Platform</span>
+          <span class="prow-val">$10,000</span>
+        </div>
+        <div class="prow">
+          <span class="prow-lbl">Application Fee</span>
+          <span class="prow-val">$15,000</span>
+        </div>
+        <div class="prow total">
+          <span class="prow-lbl">Total per App per Year</span>
+          <span class="prow-val">$25,000</span>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem;background:rgba(82,183,136,.06);border:1px solid rgba(82,183,136,.15);border-radius:10px;padding:1rem;font-size:.82rem;color:var(--mu);line-height:1.6">
+        Includes access to the platform, system hosting &amp; availability, and standard platform support. Each application is licensed independently.
+      </div>
+    </div>
+  </div>
+
+  <!-- Apps -->
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <div style="font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:1.25rem">Available Applications</div>
+    <div class="apps-row">
+      <div class="app-tile">
+        <div class="app-tile-icon">🔍</div>
+        <div class="app-tile-name">Scouting</div>
+      </div>
+      <div class="app-tile">
+        <div class="app-tile-icon">📈</div>
+        <div class="app-tile-name">Player Performance</div>
+      </div>
+      <div class="app-tile">
+        <div class="app-tile-icon">💰</div>
+        <div class="app-tile-name">Budgeting</div>
+      </div>
+      <div class="app-tile">
+        <div class="app-tile-icon">🧪</div>
+        <div class="app-tile-name">Sport Science</div>
+      </div>
+      <div class="app-tile">
+        <div class="app-tile-icon">📄</div>
+        <div class="app-tile-name">Contract Management</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-app note -->
+  <div style="max-width:700px;margin:2.5rem auto 0;background:linear-gradient(135deg,rgba(82,183,136,.08),rgba(59,130,246,.08));border:1px solid rgba(82,183,136,.25);border-radius:14px;padding:1.5rem;text-align:center">
+    <div style="font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gb);margin-bottom:.6rem">Full Connectivity Model</div>
+    <p style="font-size:.9rem;color:var(--mu);line-height:1.7">Each app connects seamlessly to the others through the Cyferd platform. Scouting data flows into Player Performance. Contract data informs the Budgeting app. Sport Science integrates with all player-facing modules. One club. One data layer. Full connectivity.</p>
+  </div>
+</div></section>
+
+
+
+
+<footer style="background:var(--dk2);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center">
+  <div style="font-size:1.5rem;margin-bottom:.75rem">⚽</div>
+  <div style="font-weight:800;font-size:1.1rem;color:var(--gb);margin-bottom:.3rem">Modern Football Club Data Blueprint</div>
+  <div style="font-size:.85rem;color:var(--mu);margin-bottom:.5rem">by Cyferd Sports</div>
+  <div style="color:var(--mu);font-size:.85rem;max-width:500px;margin:0 auto 1.5rem">A data-driven operational framework for modern football organizations — connecting sporting vision, technology, operations, and governance.</div>
+  <div style="color:var(--mu);font-size:.75rem">2026 · Cyferd Sports · luisferespejo7</div>
+</footer>
+
+</body>
+</html>
