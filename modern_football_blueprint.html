@@ -757,131 +757,91 @@ section{padding:5rem 0}
     <p style="color:var(--mu);font-size:.95rem;max-width:600px;margin:0 auto;">Data flows seamlessly between modules — from scouting a player to signing a contract, managing performance, and planning budgets.</p>
   </div>
 
-  <!-- Main grid layout like the reference image -->
-  <div style="position:relative;max-width:1000px;margin:0 auto;">
-    
-    <!-- Row 1: Sport Science (left) + Scouting App (center) -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;align-items:start;">
-      
-      <!-- Sport Science Card -->
-      <div style="background:linear-gradient(135deg,#1e2a38,#0d1e2a);border:1px solid #06b6d4;border-radius:16px;padding:1.5rem;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#06b6d4,#3b82f6);border-radius:16px 16px 0 0;"></div>
-        <h4 style="color:#06b6d4;font-size:1rem;font-weight:800;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;"><span>🧪</span> 5. Sport Science</h4>
-        <p style="font-size:.82rem;color:var(--mu);line-height:1.6;margin-bottom:1rem;">Bridges data, physiology, and football performance. Supports coaching staff with objective metrics, player load management, and evidence-based protocols.</p>
-        <div style="display:flex;flex-direction:column;gap:.4rem;">
-          <div style="display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--tx);"><span style="color:#06b6d4">›</span> Smarter load management and injury prevention</div>
-          <div style="display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--tx);"><span style="color:#06b6d4">›</span> Data-driven performance optimization and return-to-play decisions</div>
-        </div>
-      </div>
 
-      <!-- Scouting App Card (center, top) -->
-      <div style="background:linear-gradient(135deg,#1e2a38,#0d2818);border:1px solid #52b788;border-radius:16px;padding:1.5rem;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#52b788,#74c69d);border-radius:16px 16px 0 0;"></div>
-        <h4 style="color:#74c69d;font-size:1rem;font-weight:800;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;"><span>🔍</span> 1. Scouting App</h4>
-        <div style="margin-bottom:.6rem;">
-          <div style="font-size:.65rem;font-weight:700;color:#f4a261;letter-spacing:1.5px;margin-bottom:.4rem;">PHASE 1 · WHAT TO LOOK FOR</div>
-          <div style="font-size:.75rem;color:var(--tx);font-weight:600;">01 Club Methodology</div>
-          <div style="font-size:.7rem;color:var(--mu);margin-bottom:.3rem;padding-left:.7rem;">Game style · Club identity</div>
-          <div style="font-size:.75rem;color:var(--tx);font-weight:600;">02 Season Overview</div>
-          <div style="font-size:.7rem;color:var(--mu);margin-bottom:.5rem;padding-left:.7rem;">Positions needed · Key attributes</div>
-          <div style="font-size:.65rem;font-weight:700;color:#f4a261;letter-spacing:1.5px;margin-bottom:.4rem;">PHASE 2 · ANALYSIS</div>
-          <div style="font-size:.75rem;color:var(--tx);font-weight:600;">03 Data Analysis</div>
-          <div style="font-size:.7rem;color:var(--mu);margin-bottom:.3rem;padding-left:.7rem;">StatsBomb · Driblab · Impect · SkillCorner</div>
-          <div style="font-size:.75rem;color:var(--tx);font-weight:600;">04 Reference Category</div>
-          <div style="font-size:.7rem;color:var(--mu);margin-bottom:.5rem;padding-left:.7rem;">AI similarity · Cross-league comparison</div>
-          <div style="font-size:.65rem;font-weight:700;color:#f4a261;letter-spacing:1.5px;margin-bottom:.4rem;">PHASE 3 · DECISION</div>
-          <div style="font-size:.75rem;color:var(--tx);font-weight:600;">05 Candidates Comparison</div>
-          <div style="font-size:.7rem;color:var(--mu);padding-left:.7rem;">Benchmarks · Scouted vs. roster needs</div>
-        </div>
-      </div>
+<!-- 5-APP CONNECTED PLATFORM SVG -->
+<div style="max-width:900px;margin:0 auto;padding:1rem 0;">
+<svg viewBox="0 0 900 720" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;overflow:visible">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
 
-      <!-- Budgeting App Card (right) -->
-      <div style="background:linear-gradient(135deg,#1e2a38,#0d1527);border:1px solid #3b82f6;border-radius:16px;padding:1.5rem;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:16px 16px 0 0;"></div>
-        <h4 style="color:#3b82f6;font-size:1rem;font-weight:800;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;"><span>💰</span> 2. Budgeting App</h4>
-        <p style="font-size:.82rem;color:var(--mu);line-height:1.6;margin-bottom:1rem;">An end-to-end, automated budgeting platform — from framework definition through execution and in-year adjustments — ensuring consistency, transparency, and governance across all stakeholders.</p>
-        <div style="display:flex;flex-direction:column;gap:.4rem;">
-          <div style="display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--tx);"><span style="color:#3b82f6">›</span> Alignment between sporting decisions and financial strategy</div>
-          <div style="display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--tx);"><span style="color:#3b82f6">›</span> Real-time visibility of squad cost structure</div>
-          <div style="display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--tx);"><span style="color:#3b82f6">›</span> Better planning for transfers, renewals, and wage allocation</div>
-        </div>
-      </div>
-    </div>
+  <!-- Connection Lines -->
+  <line x1="450" y1="80" x2="760" y2="280" stroke="#52b788" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6,4"/>
+  <line x1="760" y1="280" x2="630" y2="600" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6,4"/>
+  <line x1="630" y1="600" x2="270" y2="600" stroke="#e63946" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6,4"/>
+  <line x1="270" y1="600" x2="140" y2="280" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6,4"/>
+  <line x1="140" y1="280" x2="450" y2="80" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6,4"/>
+  <!-- Cross connections -->
+  <line x1="450" y1="80" x2="630" y2="600" stroke="#52b788" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,6"/>
+  <line x1="450" y1="80" x2="270" y2="600" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,6"/>
+  <line x1="760" y1="280" x2="140" y2="280" stroke="#f4a261" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,6"/>
 
-    <!-- Connection arrows row (visual connectors) -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;align-items:center;">
-      <div style="text-align:center;">
-        <div style="background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:8px;padding:.5rem .75rem;display:inline-block;">
-          <div style="font-size:.65rem;font-weight:700;color:#06b6d4;letter-spacing:1px;">POSITION BENCHMARK</div>
-          <div style="font-size:.68rem;color:var(--mu);margin-top:.2rem;">External shortlist vs.<br/>internal player data</div>
-        </div>
-        <div style="color:#52b788;font-size:1.2rem;margin-top:.4rem;">↕</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="color:#52b788;font-size:1.2rem;">↓</div>
-        <div style="background:rgba(244,162,97,.08);border:1px solid rgba(244,162,97,.2);border-radius:8px;padding:.5rem .75rem;display:inline-block;margin:.3rem 0;">
-          <div style="font-size:.65rem;font-weight:700;color:#f4a261;letter-spacing:1px;">SQUAD SUCCESSION PLAN</div>
-          <div style="font-size:.68rem;color:var(--mu);margin-top:.2rem;">Scouting shortlist feeds<br/>squad succession planning</div>
-          <div style="font-size:.68rem;color:#f4a261;font-style:italic;margin-top:.2rem;">Right player · Right moment</div>
-        </div>
-        <div style="color:#52b788;font-size:1.2rem;margin-top:.3rem;">↓</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="color:#3b82f6;font-size:1.2rem;">↕</div>
-      </div>
-    </div>
+  <!-- Intersection Nodes -->
+  <!-- POSITION BENCHMARK: between Scouting & Budgeting -->
+  <circle cx="605" cy="180" r="42" fill="#0d1117" stroke="#52b788" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="605" y="174" text-anchor="middle" fill="#74c69d" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">POSITION</text>
+  <text x="605" y="186" text-anchor="middle" fill="#74c69d" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">BENCHMARK</text>
+  <text x="605" y="199" text-anchor="middle" fill="#8b949e" font-size="7" font-family="Segoe UI,system-ui,sans-serif">External vs. internal</text>
 
-    <!-- Row 2: Player Performance (left) + Contract Management (center) -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start;">
-      
-      <!-- Player Performance Card -->
-      <div style="background:linear-gradient(135deg,#1e2a38,#0d1e2a);border:1px solid #52b788;border-radius:16px;padding:1.5rem;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#52b788,#74c69d);border-radius:16px 16px 0 0;"></div>
-        <h4 style="color:#52b788;font-size:1rem;font-weight:800;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;"><span>📈</span> 4. Player Performance</h4>
-        <div style="margin-bottom:.75rem;">
-          <div style="font-size:.65rem;font-weight:700;color:#74c69d;letter-spacing:1.5px;margin-bottom:.4rem;">PLAYER INTELLIGENCE</div>
-          <div style="font-size:.75rem;color:var(--mu);margin-bottom:.6rem;">Player-centric data framework for deeper analysis</div>
-          <div style="font-size:.72rem;color:var(--tx);font-weight:600;margin-bottom:.2rem;">Integrates with:</div>
-          <div style="font-size:.7rem;color:var(--mu);margin-bottom:.6rem;">Training · Match · Medical · Nutrition · Psychology</div>
-          <div style="font-size:.72rem;color:var(--tx);font-weight:600;margin-bottom:.2rem;">Analysis angles:</div>
-          <div style="font-size:.7rem;color:var(--mu);">Technical · Physical · Medical · Development</div>
-        </div>
-      </div>
+  <!-- FINANCIAL BRIDGE: between Budgeting & Contract -->
+  <circle cx="720" cy="450" r="42" fill="#0d1117" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="720" y="444" text-anchor="middle" fill="#3b82f6" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">FINANCIAL</text>
+  <text x="720" y="456" text-anchor="middle" fill="#3b82f6" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">BRIDGE</text>
+  <text x="720" y="469" text-anchor="middle" fill="#8b949e" font-size="7" font-family="Segoe UI,system-ui,sans-serif">Budget &amp; contracts</text>
 
-      <!-- Contract Management Card (center, bottom) -->
-      <div style="background:linear-gradient(135deg,#1e2a38,#0d1117);border:1px solid #e63946;border-radius:16px;padding:1.5rem;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e63946,#f4a261);border-radius:16px 16px 0 0;"></div>
-        <h4 style="color:#e63946;font-size:1rem;font-weight:800;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;"><span>📄</span> 3. Contract Management</h4>
-        <div style="margin-bottom:.75rem;">
-          <div style="font-size:.65rem;font-weight:700;color:#e63946;letter-spacing:1.5px;margin-bottom:.6rem;">CONTRACT</div>
-          <div style="background:rgba(59,130,246,.15);border:1px solid #3b82f6;border-radius:6px;padding:.4rem .7rem;font-size:.75rem;color:var(--tx);margin-bottom:.4rem;text-align:center;">Upload Contract</div>
-          <div style="background:rgba(59,130,246,.15);border:1px solid #3b82f6;border-radius:6px;padding:.4rem .7rem;font-size:.75rem;color:var(--tx);margin-bottom:.4rem;text-align:center;">Elaborate a Contract</div>
-          <div style="background:rgba(59,130,246,.25);border:1px solid #1d4ed8;border-radius:6px;padding:.4rem .7rem;font-size:.75rem;color:var(--tx);margin-bottom:.5rem;text-align:center;">Manage Contracts</div>
-          <div style="font-size:.68rem;color:var(--mu);">· Alerts · Bonus overview · Dashboard</div>
-          <div style="font-size:.68rem;color:#f4a261;font-style:italic;margin-top:.3rem;">Reduces manual process time</div>
-        </div>
-        <div style="background:rgba(244,162,97,.08);border:1px solid rgba(244,162,97,.2);border-radius:8px;padding:.6rem .85rem;">
-          <div style="font-size:.65rem;font-weight:700;color:#f4a261;letter-spacing:1px;margin-bottom:.25rem;">UNIFIED PLAYER DATA</div>
-          <div style="font-size:.72rem;font-weight:700;color:var(--tx);margin-bottom:.2rem;">CONTRACT RENEWAL</div>
-          <div style="font-size:.7rem;color:var(--mu);">Performance data drives renewal decisions &amp; terms</div>
-        </div>
-      </div>
+  <!-- SQUAD SUCCESSION: center -->
+  <circle cx="450" cy="390" r="48" fill="#161b22" stroke="#f4a261" stroke-width="2" stroke-opacity="0.8"/>
+  <text x="450" y="383" text-anchor="middle" fill="#f4a261" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">SQUAD</text>
+  <text x="450" y="395" text-anchor="middle" fill="#f4a261" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">SUCCESSION</text>
+  <text x="450" y="408" text-anchor="middle" fill="#8b949e" font-size="7" font-family="Segoe UI,system-ui,sans-serif">Right player · Right moment</text>
 
-      <!-- Empty right cell with connecting info -->
-      <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1rem;padding:1rem;">
-        <div style="background:rgba(82,183,136,.06);border:1px solid rgba(82,183,136,.2);border-radius:12px;padding:1.25rem;text-align:center;">
-          <div style="font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gb);margin-bottom:.75rem;">Key Outcomes</div>
-          <div style="display:flex;flex-direction:column;gap:.5rem;">
-            <div style="font-size:.75rem;color:var(--mu);display:flex;gap:.5rem;align-items:flex-start;text-align:left;"><span style="color:var(--gl);flex-shrink:0;">›</span> Alignment between sporting decisions and financial strategy</div>
-            <div style="font-size:.75rem;color:var(--mu);display:flex;gap:.5rem;align-items:flex-start;text-align:left;"><span style="color:var(--gl);flex-shrink:0;">›</span> Real-time visibility of squad cost structure</div>
-            <div style="font-size:.75rem;color:var(--mu);display:flex;gap:.5rem;align-items:flex-start;text-align:left;"><span style="color:var(--gl);flex-shrink:0;">›</span> Better planning for transfers, renewals, and wage allocation</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- UNIFIED PLAYER DATA: between Contract & Player -->
+  <circle cx="450" cy="660" r="42" fill="#0d1117" stroke="#e63946" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="450" y="654" text-anchor="middle" fill="#e63946" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">UNIFIED</text>
+  <text x="450" y="666" text-anchor="middle" fill="#e63946" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">PLAYER DATA</text>
+  <text x="450" y="679" text-anchor="middle" fill="#8b949e" font-size="7" font-family="Segoe UI,system-ui,sans-serif">Renewal &amp; performance</text>
 
-  </div>
+  <!-- LOAD INTELLIGENCE: between Player & Sport Science -->
+  <circle cx="180" cy="450" r="42" fill="#0d1117" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="180" y="444" text-anchor="middle" fill="#06b6d4" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">LOAD</text>
+  <text x="180" y="456" text-anchor="middle" fill="#06b6d4" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">INTELLIGENCE</text>
+  <text x="180" y="469" text-anchor="middle" fill="#8b949e" font-size="7" font-family="Segoe UI,system-ui,sans-serif">Injury prevention</text>
+
+  <!-- PERFORMANCE PROFILE: between Sport Science & Scouting -->
+  <circle cx="295" cy="180" r="42" fill="#0d1117" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="295" y="174" text-anchor="middle" fill="#8b5cf6" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">PERFORMANCE</text>
+  <text x="295" y="186" text-anchor="middle" fill="#8b5cf6" font-size="8.5" font-weight="700" font-family="Segoe UI,system-ui,sans-serif">PROFILE</text>
+  <text x="295" y="199" text-anchor="middle" fill="#8b949e" font-size="7" font-family="Segoe UI,system-ui,sans-serif">Physical benchmarks</text>
+
+  <!-- App Nodes (larger circles) -->
+  <!-- 1. Scouting App - Top -->
+  <circle cx="450" cy="80" r="62" fill="#0d2818" stroke="#52b788" stroke-width="2" filter="url(#glow)"/>
+  <text x="450" y="71" text-anchor="middle" fill="#52b788" font-size="22" font-family="Segoe UI,system-ui,sans-serif">🔍</text>
+  <text x="450" y="87" text-anchor="middle" fill="#74c69d" font-size="11" font-weight="900" font-family="Segoe UI,system-ui,sans-serif">1. SCOUTING APP</text>
+
+  <!-- 2. Budgeting App - Top Right -->
+  <circle cx="760" cy="280" r="62" fill="#0d1a2e" stroke="#3b82f6" stroke-width="2" filter="url(#glow)"/>
+  <text x="760" y="271" text-anchor="middle" fill="#3b82f6" font-size="22" font-family="Segoe UI,system-ui,sans-serif">💰</text>
+  <text x="760" y="287" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="900" font-family="Segoe UI,system-ui,sans-serif">2. BUDGETING APP</text>
+
+  <!-- 3. Contract Mgmt - Bottom Right -->
+  <circle cx="630" cy="600" r="62" fill="#2a0a0d" stroke="#e63946" stroke-width="2" filter="url(#glow)"/>
+  <text x="630" y="591" text-anchor="middle" fill="#e63946" font-size="22" font-family="Segoe UI,system-ui,sans-serif">📄</text>
+  <text x="630" y="607" text-anchor="middle" fill="#e63946" font-size="10" font-weight="900" font-family="Segoe UI,system-ui,sans-serif">3. CONTRACT MGMT</text>
+
+  <!-- 4. Player Performance - Bottom Left -->
+  <circle cx="270" cy="600" r="62" fill="#051a20" stroke="#06b6d4" stroke-width="2" filter="url(#glow)"/>
+  <text x="270" y="591" text-anchor="middle" fill="#06b6d4" font-size="22" font-family="Segoe UI,system-ui,sans-serif">📈</text>
+  <text x="270" y="607" text-anchor="middle" fill="#06b6d4" font-size="10" font-weight="900" font-family="Segoe UI,system-ui,sans-serif">4. PLAYER PERF.</text>
+
+  <!-- 5. Sport Science - Top Left -->
+  <circle cx="140" cy="280" r="62" fill="#1a1030" stroke="#8b5cf6" stroke-width="2" filter="url(#glow)"/>
+  <text x="140" y="271" text-anchor="middle" fill="#8b5cf6" font-size="22" font-family="Segoe UI,system-ui,sans-serif">🧪</text>
+  <text x="140" y="287" text-anchor="middle" fill="#8b5cf6" font-size="10" font-weight="900" font-family="Segoe UI,system-ui,sans-serif">5. SPORT SCIENCE</text>
+
+</svg>
 </div>
+
 
 </section>
 <section id="pricing" style="background:var(--dk)"><div class="wrap">
