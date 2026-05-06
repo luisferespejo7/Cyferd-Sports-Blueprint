@@ -754,55 +754,48 @@ section{padding:5rem 0}
       <p style="color:var(--mu);max-width:640px;margin:0 auto;">Each app is powerful on its own — together they form a fully integrated football intelligence system.</p>
     </div>
 
-    <!-- Diagram container with relative positioning -->
-    <div style="position:relative;width:100%;max-width:1000px;margin:0 auto;height:700px;">
+    <div style="position:relative;width:100%;max-width:1060px;margin:0 auto;height:780px;">
 
-      <!-- SVG ARROWS LAYER -->
-      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;pointer-events:none;" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet">
+      <!-- SVG ARROWS -->
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;pointer-events:none;" viewBox="0 0 1060 780" preserveAspectRatio="xMidYMid meet">
         <defs>
-          <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#e07a30"/></marker>
-          <marker id="arrow-yellow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#e8d44d"/></marker>
-          <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#74c69d"/></marker>
-          <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#e05252"/></marker>
-          <marker id="arrow-pink" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#c678dd"/></marker>
-          <marker id="arrow-orange-start" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto-start-reverse">
-            <path d="M0,0 L0,6 L8,3 z" fill="#e07a30"/></marker>
-          <marker id="arrow-pink-start" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto-start-reverse">
-            <path d="M0,0 L0,6 L8,3 z" fill="#c678dd"/></marker>
+          <marker id="arr-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e07a30"/></marker>
+          <marker id="arr-orange-r" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto-start-reverse"><path d="M0,0 L0,6 L8,3 z" fill="#e07a30"/></marker>
+          <marker id="arr-yellow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e8d44d"/></marker>
+          <marker id="arr-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#74c69d"/></marker>
+          <marker id="arr-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e05252"/></marker>
+          <marker id="arr-red-r" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto-start-reverse"><path d="M0,0 L0,6 L8,3 z" fill="#e05252"/></marker>
+          <marker id="arr-pink" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#c678dd"/></marker>
+          <marker id="arr-pink-r" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto-start-reverse"><path d="M0,0 L0,6 L8,3 z" fill="#c678dd"/></marker>
         </defs>
 
         <!-- Orange: Sport Science <-> Player Performance (vertical, bidirectional) -->
-        <line x1="145" y1="205" x2="145" y2="490" stroke="#e07a30" stroke-width="2.5" marker-end="url(#arrow-orange)" marker-start="url(#arrow-orange-start)"/>
+        <line x1="145" y1="215" x2="145" y2="535" stroke="#e07a30" stroke-width="2.5" marker-end="url(#arr-orange)" marker-start="url(#arr-orange-r)"/>
 
-        <!-- Yellow: Sport Science -> Player Performance diagonal -->
-        <line x1="260" y1="215" x2="195" y2="490" stroke="#e8d44d" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <!-- Yellow: Sport Science -> Player Performance (diagonal) -->
+        <line x1="265" y1="220" x2="200" y2="535" stroke="#e8d44d" stroke-width="2.5" marker-end="url(#arr-yellow)"/>
 
-        <!-- Green: Scouting -> Player Performance (diagonal, through Position Benchmark label) -->
-        <line x1="440" y1="220" x2="290" y2="490" stroke="#74c69d" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+        <!-- Green: Scouting -> Player Performance (diagonal, through Position Benchmark) -->
+        <line x1="460" y1="235" x2="285" y2="535" stroke="#74c69d" stroke-width="2.5" marker-end="url(#arr-green)"/>
 
-        <!-- Green: Scouting -> Contract Management (vertical, through Squad Succession label) -->
-        <line x1="550" y1="220" x2="530" y2="490" stroke="#74c69d" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+        <!-- Green: Scouting -> Contract Management (diagonal, through Squad Succession) -->
+        <line x1="530" y1="235" x2="590" y2="535" stroke="#74c69d" stroke-width="2.5" marker-end="url(#arr-green)"/>
 
-        <!-- Red: Contract Management -> Budgeting (diagonal) -->
-        <line x1="650" y1="530" x2="810" y2="370" stroke="#e05252" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+        <!-- Red: Contract Management <-> Budgeting (diagonal, bidirectional) -->
+        <line x1="720" y1="570" x2="860" y2="390" stroke="#e05252" stroke-width="2.5" marker-end="url(#arr-red)" marker-start="url(#arr-red-r)"/>
 
         <!-- Pink: Player Performance <-> Contract Management (horizontal, bidirectional) -->
-        <line x1="310" y1="570" x2="470" y2="570" stroke="#c678dd" stroke-width="2.5" marker-end="url(#arrow-pink)" marker-start="url(#arrow-pink-start)"/>
+        <line x1="330" y1="620" x2="510" y2="620" stroke="#c678dd" stroke-width="2.5" marker-end="url(#arr-pink)" marker-start="url(#arr-pink-r)"/>
       </svg>
 
       <!-- BOX 1: Sport Science (top-left) -->
-      <div style="position:absolute;top:20px;left:0;width:270px;background:#0f2d45;border:2px solid var(--gb);border-radius:14px;padding:1.2rem 1.1rem;">
+      <div style="position:absolute;top:20px;left:0;width:275px;background:#0f2d45;border:2px solid var(--gb);border-radius:14px;padding:1.2rem 1.1rem;">
         <h3 style="color:#fff;font-size:1.25rem;font-weight:700;margin:0 0 .7rem;text-align:center;">Sport Science</h3>
         <p style="color:#b0c4d4;font-size:.82rem;margin:0;text-align:center;line-height:1.5;">Bridges data, physiology, and football performance. Supports coaching staff with objective metrics, player load management, and evidence-based protocols.</p>
       </div>
 
-      <!-- BOX 2: Scouting App (top-center) -->
-      <div style="position:absolute;top:10px;left:370px;width:260px;background:#0f2d45;border:2px solid var(--gb);border-radius:14px;padding:1rem 1rem;font-size:.75rem;">
+      <!-- BOX 2: Scouting App (top-center, shifted right for space) -->
+      <div style="position:absolute;top:10px;left:390px;width:265px;background:#0f2d45;border:2px solid var(--gb);border-radius:14px;padding:1rem 1rem;font-size:.75rem;">
         <h3 style="color:#fff;font-size:1.2rem;font-weight:700;margin:0 0 .6rem;text-align:center;">Scouting App</h3>
         <div style="background:#0a1f30;border-radius:8px;padding:.6rem .7rem;">
           <div style="color:#e8d44d;font-size:.65rem;font-weight:700;letter-spacing:.08em;margin-bottom:.3rem;">PHASE 1 · WHAT TO LOOK FOR</div>
@@ -822,13 +815,13 @@ section{padding:5rem 0}
       </div>
 
       <!-- BOX 3: Budgeting App (right) -->
-      <div style="position:absolute;top:270px;right:0;width:220px;background:#0f2d45;border:2px solid var(--gb);border-radius:14px;padding:1.1rem 1rem;">
+      <div style="position:absolute;top:260px;right:0;width:225px;background:#0f2d45;border:2px solid var(--gb);border-radius:14px;padding:1.1rem 1rem;">
         <h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin:0 0 .6rem;text-align:center;">Budgeting App</h3>
         <p style="color:#b0c4d4;font-size:.78rem;margin:0;text-align:center;line-height:1.5;">An end-to-end, automated budgeting platform — from framework definition through execution and in-year adjustments — ensuring consistency, transparency, and governance across all stakeholders.</p>
       </div>
 
       <!-- BOX 4: Player Performance (bottom-left) -->
-      <div style="position:absolute;bottom:20px;left:0;width:305px;background:#0a1f30;border:2px solid var(--gb);border-radius:14px;padding:1rem 1rem;font-size:.75rem;">
+      <div style="position:absolute;bottom:20px;left:0;width:315px;background:#0a1f30;border:2px solid var(--gb);border-radius:14px;padding:1rem 1rem;font-size:.75rem;">
         <h3 style="color:#fff;font-size:1.2rem;font-weight:700;margin:0 0 .6rem;text-align:center;">Player Performance</h3>
         <div style="border-top:1px solid #74c69d;padding-top:.5rem;margin-bottom:.4rem;">
           <div style="color:#74c69d;font-size:.65rem;font-weight:700;letter-spacing:.1em;margin-bottom:.3rem;">PLAYER INTELLIGENCE</div>
@@ -840,8 +833,8 @@ section{padding:5rem 0}
         </div>
       </div>
 
-      <!-- BOX 5: Contract Management (bottom-center) -->
-      <div style="position:absolute;bottom:20px;left:400px;width:260px;background:#0a1f30;border:2px solid var(--gb);border-radius:14px;padding:1rem 1rem;font-size:.75rem;">
+      <!-- BOX 5: Contract Management (bottom-center, shifted right) -->
+      <div style="position:absolute;bottom:20px;left:430px;width:275px;background:#0a1f30;border:2px solid var(--gb);border-radius:14px;padding:1rem 1rem;font-size:.75rem;">
         <h3 style="color:#fff;font-size:1.2rem;font-weight:700;margin:0 0 .5rem;text-align:center;">Contract Management</h3>
         <div style="border-top:1px solid #52a7e0;padding-top:.5rem;">
           <div style="color:#52a7e0;font-size:.65rem;font-weight:700;letter-spacing:.1em;margin-bottom:.4rem;">CONTRACT LIFECYCLE</div>
@@ -853,24 +846,41 @@ section{padding:5rem 0}
         </div>
       </div>
 
-      <!-- INTERSECTION LABEL: Position Benchmark (on the Scouting->PlayerPerf arrow) -->
-      <div style="position:absolute;top:310px;left:290px;background:#0a1a28;border:1.5px solid #e8d44d;border-radius:6px;padding:.4rem .7rem;min-width:160px;z-index:10;">
+      <!-- INTERSECTION 1: Sport Science <-> Player Performance -->
+      <div style="position:absolute;top:355px;left:0px;background:#0a1a28;border:1.5px solid #e07a30;border-radius:8px;padding:.5rem .8rem;width:215px;z-index:10;">
+        <ul style="margin:0;padding-left:1rem;color:#b0c4d4;font-size:.75rem;line-height:1.6;">
+          <li>Smarter load management and injury prevention</li>
+          <li>Data-driven performance optimization and return-to-play decisions</li>
+        </ul>
+      </div>
+
+      <!-- INTERSECTION 2: Position Benchmark (Scouting -> Player Performance) -->
+      <div style="position:absolute;top:330px;left:285px;background:#0a1a28;border:1.5px solid #e8d44d;border-radius:6px;padding:.4rem .7rem;min-width:160px;z-index:10;">
         <div style="color:#e8d44d;font-size:.68rem;font-weight:700;letter-spacing:.06em;margin-bottom:.15rem;">POSITION BENCHMARK</div>
         <div style="color:#b0c4d4;font-size:.68rem;">External shortlist vs. internal player data</div>
       </div>
 
-      <!-- INTERSECTION LABEL: Squad Succession Plan (on the Scouting->ContractMgmt arrow) -->
-      <div style="position:absolute;top:350px;left:460px;background:#0a1a28;border:1.5px solid #74c69d;border-radius:6px;padding:.4rem .7rem;min-width:175px;z-index:10;">
+      <!-- INTERSECTION 3: Squad Succession Plan (Scouting -> Contract Mgmt) -->
+      <div style="position:absolute;top:375px;left:480px;background:#0a1a28;border:1.5px solid #74c69d;border-radius:6px;padding:.4rem .7rem;min-width:175px;z-index:10;">
         <div style="color:#74c69d;font-size:.68rem;font-weight:700;letter-spacing:.06em;margin-bottom:.15rem;">SQUAD SUCCESSION PLAN</div>
         <div style="color:#b0c4d4;font-size:.68rem;">Scouting shortlist feeds squad succession planning</div>
         <div style="color:#e8d44d;font-size:.66rem;font-style:italic;margin-top:.15rem;">Right player · Right moment</div>
       </div>
 
-      <!-- INTERSECTION LABEL: Unified Player Data / Contract Renewal (on PlayerPerf<->ContractMgmt arrow) -->
-      <div style="position:absolute;bottom:145px;left:310px;background:#0a1a28;border:1.5px solid #c678dd;border-radius:6px;padding:.4rem .7rem;min-width:160px;z-index:10;">
+      <!-- INTERSECTION 4: Unified Player Data / Contract Renewal -->
+      <div style="position:absolute;bottom:170px;left:330px;background:#0a1a28;border:1.5px solid #c678dd;border-radius:6px;padding:.4rem .7rem;min-width:160px;z-index:10;">
         <div style="color:#e8d44d;font-size:.65rem;font-weight:700;text-decoration:underline;margin-bottom:.15rem;">UNIFIED PLAYER DATA</div>
         <div style="color:#fff;font-size:.68rem;font-weight:600;margin-bottom:.15rem;">CONTRACT RENEWAL</div>
         <div style="color:#b0c4d4;font-size:.67rem;">Performance data drives renewal decisions &amp; terms</div>
+      </div>
+
+      <!-- INTERSECTION 5: Budgeting <-> Contract Management -->
+      <div style="position:absolute;top:475px;right:50px;background:#0a1a28;border:1.5px solid #e05252;border-radius:8px;padding:.5rem .8rem;width:215px;z-index:10;">
+        <ul style="margin:0;padding-left:1rem;color:#b0c4d4;font-size:.75rem;line-height:1.6;">
+          <li>Alignment between sporting decisions and financial strategy</li>
+          <li>Real-time visibility of squad cost structure</li>
+          <li>Better planning for transfers, renewals, and wage allocation</li>
+        </ul>
       </div>
 
     </div>
