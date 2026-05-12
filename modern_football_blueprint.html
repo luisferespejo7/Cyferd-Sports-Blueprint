@@ -1001,6 +1001,53 @@ function saveProposal(colId) {
 }
 </script>
 
+  <script>
+    // Draggable text boxes in the "How All Five Apps Work Together" ecosystem chart
+    (function() {
+        function makeDraggable(el) {
+              el.style.cursor = 'grab';
+              el.style.userSelect = 'none';
+              let isDragging = false, startX, startY, origLeft, origTop;
+              el.addEventListener('mousedown', function(e) {
+                      if (e.target.tagName === 'A' || e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+                      isDragging = true;
+                      startX = e.clientX;
+                      startY = e.clientY;
+                      origLeft = parseInt(el.style.left) || 0;
+                      origTop = parseInt(el.style.top) || 0;
+                      el.style.cursor = 'grabbing';
+                      el.style.zIndex = '999';
+                      e.preventDefault();
+              });
+              document.addEventListener('mousemove', function(e) {
+                      if (!isDragging) return;
+                      el.style.left = (origLeft + e.clientX - startX) + 'px';
+                      el.style.top = (origTop + e.clientY - startY) + 'px';
+              });
+              document.addEventListener('mouseup', function() {
+                      if (!isDragging) return;
+                      isDragging = false;
+                      el.style.cursor = 'grab';
+              });
+        }
+        window.addEventListener('DOMContentLoaded', function() {
+              var section = document.getElementById('ecosystem');
+              if (!section) return;
+              var wrap = section.querySelector('.wrap');
+              if (!wrap) return;
+              var innerDiv = wrap.firstElementChild;
+              if (!innerDiv) return;
+              var chartDiv = innerDiv.lastElementChild;
+              if (!chartDiv) return;
+              Array.from(chartDiv.children).forEach(function(el) {
+                      if (el.tagName !== 'svg' && window.getComputedStyle(el).position === 'absolute') {
+                                makeDraggable(el);
+                      }
+              });
+        });
+    })();
+  </script>
+  
 <footer style="background:var(--dk2);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center">
   <div style="font-size:1.5rem;margin-bottom:.75rem">⚽</div>
   <div style="font-weight:800;font-size:1.1rem;color:var(--gb);margin-bottom:.3rem">Modern Football Club Data Blueprint</div>
